@@ -4,10 +4,25 @@ var _ = require("lodash");
 
 var list = [ "john", "paul", "george", "ringo" ];
 
-function message(){
-	console.log("This is a message");
-	Alert("This is a message");
+function addList(){
+	var newItem = $("#newItem").val();
+	list.push(newItem);
+	printList();
+	$("#newItem").val("");
 }
+
+function printList(){
+	var ourList = $("#nameList");
+	ourList.html("");
+	_(list).forEach(function(el){
+		ourList.append("<li>" + el + "</li>");
+	});
+}
+
+$(document).ready(printList);
+
+window.addList = addList;
+window.printList = printList;
 },{"jquery":2,"lodash":3}],2:[function(require,module,exports){
 /*!
  * jQuery JavaScript Library v3.3.1
